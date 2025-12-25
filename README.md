@@ -1,2 +1,4 @@
-# reshul-backend
-Backend mini projects by Reshul
+# Backend mini projects by Reshul
+
+## Auth
+> Cookies , Password encryption and decryption , JWT
