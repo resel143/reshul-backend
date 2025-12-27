@@ -59,12 +59,21 @@ app.post("/login", async(req , res)=>{
                 // create a JWT token
                 let token = jwt.sign({email}, secret);
                 // store the token as cookie in browser
-                res.cookie(token);
-                res.send(user);
+                res.cookie("token", token);
+                res.redirect("/logout");
             }
             else res.send("Password is Incorrect!!!")
         });
     }
+});
+
+app.get("/logout", (req, res)=>{
+    res.render("logout");
+})
+
+app.post("/logout", (req, res)=>{
+    res.clearCookie("token");
+    res.redirect("/login");
 })
 
 
