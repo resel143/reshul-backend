@@ -1,27 +1,18 @@
-// Getting started - 3 items
-// Cookies
-// Password encryption and decryption 
-// JWT
-const cookieParser = require("cookie-parser");
 const express = require("express");
-
-const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+const path = require("path");
+const userModel = require("./models/user");
 
 const app = express();
 
-app.use(cookieParser())
+app.set("view engine", "ejs");
+app.use(express.json())
+app.use(express.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
-
-app.get("/", (req, res)=> {
-    let token = jwt.sign({email: "reshul@gmail.com"}, "secret");
-    res.cookie("token", token);
-    res.send("JWT")
-});
-
-
-app.get("/read", (req, res)=>{
-    const data = jwt.verify(req.cookies.token, "secret");
-    res.send(data)
+app.get("/", (req, res)=>{
+    res.render("index")
 })
 
 app.listen(3000);
