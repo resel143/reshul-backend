@@ -2,9 +2,11 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const userModel = require("./models/user");
-
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const app = express();
+
+const secret = "reshul";
 
 app.set("view engine", "ejs");
 app.use(express.json())
@@ -41,14 +43,25 @@ app.get("/login", (req, res)=>{
 })
 
 app.post("/login", async(req , res)=>{
+    // user enter email and password
     let {email, password}= req.body;
 
+    // we search in db based on email
     let user = await userModel.findOne({email});
 
+    // user does not exist in db
     if(!user) res.send("No user found!!!");
+    // if user exists
     else{
+        // compare the password using hash values
         bcrypt.compare(req.body.password, user.password, (err, result)=>{
-            if(result) res.send(user);
+            if(result) {
+                // create a JWT token
+                let token = jwt.sign({email}, secret);
+                // store the token as cookie in browser
+                res.cookie(token);
+                res.send(user);
+            }
             else res.send("Password is Incorrect!!!")
         });
     }
