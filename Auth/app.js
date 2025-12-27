@@ -14,6 +14,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
+
+app.get("/error", (req , res)=>{
+    res.render("error");
+})
+
 app.get("/", (req, res)=>{
     res.render("createuser")
 })
@@ -25,6 +30,8 @@ app.post("/create", (req, res)=>{
     bcrypt.genSalt(10, (err, salt)=>{
         bcrypt.hash(password, salt, async(err, hash)=>{
 
+        if(err) res.redirect("/error");
+
             createUser = await userModel({
                 username,
                 password:hash,
@@ -33,7 +40,7 @@ app.post("/create", (req, res)=>{
             });
 
             await createUser.save();
-            res.send(createUser)
+            res.redirect("/login")
         })
     })
 });
@@ -50,7 +57,7 @@ app.post("/login", async(req , res)=>{
     let user = await userModel.findOne({email});
 
     // user does not exist in db
-    if(!user) res.send("No user found!!!");
+    if(!user) res.redirect("/error");
     // if user exists
     else{
         // compare the password using hash values
@@ -62,7 +69,7 @@ app.post("/login", async(req , res)=>{
                 res.cookie("token", token);
                 res.redirect("/logout");
             }
-            else res.send("Password is Incorrect!!!")
+            else res.redirect("/error")
         });
     }
 });
