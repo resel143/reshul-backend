@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
 app.get("/", (req, res)=>{
-    res.render("index")
+    res.render("createuser")
 })
 
 app.post("/create", (req, res)=>{
@@ -34,6 +34,24 @@ app.post("/create", (req, res)=>{
             res.send(createUser)
         })
     })
+});
+
+app.get("/login", (req, res)=>{
+    res.render("login");
+})
+
+app.post("/login", async(req , res)=>{
+    let {email, password}= req.body;
+
+    let user = await userModel.findOne({email});
+
+    if(!user) res.send("No user found!!!");
+    else{
+        bcrypt.compare(req.body.password, user.password, (err, result)=>{
+            if(result) res.send(user);
+            else res.send("Password is Incorrect!!!")
+        });
+    }
 })
 
 
