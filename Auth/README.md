@@ -1,11 +1,4 @@
-# Backend Mini Projects by Reshul
-
-A collection of backend-focused mini projects built to learn and practice
-real-world backend concepts using **Node.js, Express, MongoDB, and modern authentication techniques**.
-
----
-
-## 🔐 Auth Module
+# 🔐 Auth Module
 
 This project implements a **complete authentication system** using cookies, JWT, bcrypt, and MongoDB.
 
