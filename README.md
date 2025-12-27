@@ -1,6 +1,7 @@
 # Backend mini projects by Reshul
 
-## Auth
+## [Auth Module](https://github.com/resel143/reshul-backend/tree/main/Auth)
+
 - Secure password storage with bcrypt
 - Stateless authentication using JWT
 - Cookie-based authentication
