@@ -4,6 +4,21 @@ This project implements a **complete authentication system** using cookies, JWT,
 
 All features were planned and tracked using **GitHub Issues** to follow a real development workflow.
 
+## 🎬 Demo
+
+### Auth Flow Video
+<video width="600" controls>
+  <source src="https://github.com/resel143/reshul-backend/blob/main/Auth/public/assets/Auth%20flow.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### MongoDB View
+![MongoDB View](https://github.com/resel143/reshul-backend/blob/main/Auth/public/assets/mongodb_view.png)
+
+### JWT Stored in Cookie
+![JWT Cookie](https://github.com/resel143/reshul-backend/blob/main/Auth/public/assets/jwt_cookie.png)
+
+
 ### 📌 Head Issue
 - 🔗 Auth Module Tracking: [Issue #4](https://github.com/resel143/reshul-backend/issues/4)
 
