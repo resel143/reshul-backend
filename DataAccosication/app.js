@@ -1,10 +1,11 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const userModel = require("./models/user")
-
+const postModel  = require("./models/post")
 
 const app = express();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 app.set("view engine", "ejs");
 app.use(express.json())
@@ -32,8 +33,10 @@ app.post("/register", async(req, res)=>{
                 age,
                 password: hash
             })
-            if(newUser) res.status(200).send("User Created Successfully!!!")
-
+            
+            let token = jwt.sign({email, userId: newUser._id}, "secret");
+            res.cookie("token", token);
+            res.send("Registration Successfull")
         })
     })
 
