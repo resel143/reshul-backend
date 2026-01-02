@@ -65,4 +65,10 @@ app.post("/login", async (req, res)=> {
 })
 
 
+app.post("/logout", (req,res)=>{
+    res.clearCookie("token");
+    res.redirect("/login");
+})
+
+
 app.listen(3000)
