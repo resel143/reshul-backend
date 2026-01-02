@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Posts</title>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-400 via-blue-500 to-purple-600">
+
+    <div class="backdrop-blur-lg bg-white/20 shadow-2xl rounded-2xl p-8 w-full max-w-lg text-center">
+        <h1 class="text-4xl font-extrabold text-white mb-6">
+            🎉 You are authenticated!
+        </h1>
+
+        <p class="text-white text-lg mb-6">
+            Welcome to the Posts page. Only logged-in users can see this.
+        </p>
+
+        <div class="space-y-4">
+            <button class="w-full py-3 rounded-xl bg-black text-white font-semibold tracking-wide hover:bg-white hover:text-black transition-all duration-300 shadow-lg">
+                View Posts
+            </button>
+
+            <button class="w-full py-3 rounded-xl bg-red-600 text-white font-semibold tracking-wide hover:bg-white hover:text-red-600 transition-all duration-300 shadow-lg">
+                Logout
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -45,6 +45,11 @@ app.get("/login", (req , res)=> {
     res.render("login")
 })
 
+
+app.get("/post", (req, res)=>{
+    res.render("userpost")
+})
+
 app.post("/login", async (req, res)=> {
     const {email, password} = req.body;
 
@@ -53,7 +58,7 @@ app.post("/login", async (req, res)=> {
     if(!user) return res.status(500).send("Something went wrong!!")
 
     bcrypt.compare(password, user.password, (err, result)=>{
-       if(result) res.status(200).send("You are Authenticated!!")
+       if(result) res.redirect("/post")
         else res.status(500).send("Oops!!! Something went wrong")
     })
 
