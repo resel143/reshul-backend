@@ -39,7 +39,10 @@ app.post("/register", async(req, res)=>{
             res.send("Registration Successfull")
         })
     })
+})
 
+app.get("/login", (req , res)=> {
+    res.render("login")
 })
 
 
