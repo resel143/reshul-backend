@@ -45,5 +45,19 @@ app.get("/login", (req , res)=> {
     res.render("login")
 })
 
+app.post("/login", async (req, res)=> {
+    const {email, password} = req.body;
+
+    let user = await userModel.findOne({email});
+
+    if(!user) return res.status(500).send("Something went wrong!!")
+
+    bcrypt.compare(password, user.password, (err, result)=>{
+       if(result) res.status(200).send("You are Authenticated!!")
+        else res.status(500).send("Oops!!! Something went wrong")
+    })
+
+})
+
 
 app.listen(3000)
