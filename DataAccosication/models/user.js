@@ -7,7 +7,8 @@ let userSchema = mongoose.Schema({
     username: String,
     name: String,
     email: String,
-    passwored: String
+    age: Number,
+    password: String
 })
 
 
