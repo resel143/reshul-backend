@@ -1,4 +1,4 @@
-# Backend mini projects by Reshul
+# Backend mini projects
 
 ## [Auth Module](https://github.com/resel143/reshul-backend/tree/main/Auth)
 
