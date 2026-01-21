@@ -1,6 +1,6 @@
 # Backend projects
 
-## [Auth Module](https://github.com/resel143/reshul-backend/tree/main/Auth)
+## [Authentication Module](https://github.com/resel143/reshul-backend/tree/main/Auth)
 
 - Secure password storage using bcrypt
 - Stateless authentication using JWT
