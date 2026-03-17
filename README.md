@@ -1,4 +1,4 @@
-# Backend projects
+# Backend project
 
 ## [Authentication on Module](https://github.com/resel143/reshul-backend/tree/main/Auth)
 
